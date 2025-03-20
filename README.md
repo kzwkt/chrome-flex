@@ -17,18 +17,21 @@ rename all part number to sda/nvme/20+
 sudo sfdisk /dev/sda <pbakup --force
 
 ```
-  cat /sys/block/sda/queue/logical_block_size 
+ cat /sys/block/sda/queue/logical_block_size 
 512  
 
  making part works for bs=512 
 
 do be curious and  run cgpt create -p 0 /dev/sda, it will wipe partition table 
+```
 
 sudo bash make_partitions.sh
 sudo bash write_image.sh flex.bin /dev/sda
 sudo bash fix_uuid_grub.sh
+```
 
 after first login you need powerwash to use rw_partioin fully else only 1gb is writeable 
+
 
 
   # refrences
