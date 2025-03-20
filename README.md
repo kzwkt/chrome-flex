@@ -2,7 +2,7 @@
 
 # Dual/multi boot manual install 
 
-dont do this on windows as windows boot loader use hardcoded address in bcd like part number, adding part before windows part mess it and need to fix bcd with recovery boot 
+dont do this on windows as windows boot loader use hardcoded address in bcd like part number, adding part before windows part mess it and need to fix bcd usb recovery  
 
 https://dl.google.com/chromeos-flex/images/latest.bin.zip
 
