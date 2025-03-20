@@ -30,7 +30,7 @@ sudo bash write_image.sh flex.bin /dev/sda
 sudo bash fix_uuid_grub.sh
 ```
 
-after first login you need powerwash to use rw_partioin fully else only 1gb is writeable 
+after first login you need powerwash to use rw_partioin ,  else only 1gb is writeable 
 
 
 
