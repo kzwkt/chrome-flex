@@ -25,7 +25,7 @@ do
 add_partition ${type[i]} ${label[i]} ${id[i]} ${size[i]}
 done
 
-s=end-b
+s=$((end-b))
 sudo cgpt add -b $b -s $s -t data -l "STATE" -i 1
 
 # Set boot priorities
