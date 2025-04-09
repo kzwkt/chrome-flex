@@ -3,7 +3,10 @@
 # Dual/multi boot manual install 
 
 dont do this on windows as windows boot loader use hardcoded address in bcd like part number, adding part before windows part mess it and need to fix bcd usb recovery  
-you could try adding after windows partition havent tested 
+
+you need to install windows after installing flex first as it uses partition number for booting and windows does same but windows is flexible maybe it will change in future 
+
+for linux as long as it use uuid/partuuid it will not care about partiton number
 
 # dependecies
 sudo apt install cgpt pv
@@ -19,9 +22,24 @@ rename existing partition to part number>=20 as flex uses from 1-12, part number
 
 sudo sfdisk -d /dev/sda > pbakup
 
+rename all part number to sda/nvme/20+
+
+example:
+/dev/sda1 : start=  1658824704, size=     1048576, type=SOME_RANDOM, uuid=SOME_RANDOM
+/dev/sda2 : start=  1743759360, size=   209764352, type=SOME_RANDOM, uuid=SOME_RANDOM
+/dev/sda3 : start=  1616881664, size=    41943040, type=SOME_RANDOM4, uuid=SOME_RANDOM
+
+rename it as
+
+/dev/sda20 : start=  1658824704, size=     1048576, type=SOME_RANDOM, uuid=SOME_RANDOM
+/dev/sda21 : start=  1743759360, size=   209764352, type=SOME_RANDOM, uuid=SOME_RANDOM
+/dev/sda22 : start=  1616881664, size=    41943040, type=SOME_RANDOM4, uuid=SOME_RANDOM
+
 cp pbakup backup
 
-rename all part number to sda/nvme/20+
+# restore modified partition table to change part number
+
+# important : might need reboot save original part backup/ take new one in diffrent non volatile location
 
 sudo sfdisk /dev/sda <pbakup --force
 
@@ -30,6 +48,7 @@ sudo sfdisk /dev/sda <pbakup --force
 512  
 
  making part works for bs=512 
+ for diffrent block size 
 
 do be curious and  run cgpt create -p 0 /dev/sda, it will wipe partition table 
 ```
