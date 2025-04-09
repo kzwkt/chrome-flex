@@ -3,6 +3,10 @@
 # Dual/multi boot manual install 
 
 dont do this on windows as windows boot loader use hardcoded address in bcd like part number, adding part before windows part mess it and need to fix bcd usb recovery  
+you could try adding after windows partition havent tested 
+
+# dependecies
+sudo apt install cgpt pv
 
 https://dl.google.com/chromeos-flex/images/latest.bin.zip
 
