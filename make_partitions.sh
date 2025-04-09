@@ -5,6 +5,8 @@
 
 b=32768
 end=124207128
+sector_size=$(cat /sys/class/block/$device/queue/logical_block_size)
+blocksize=${sector_size:-512}
 type=(firmware kernel rootfs rootfs reserved reserved kernel data efi rootfs rootfs)
 label=("RWFW" "KERN-C" "ROOT-C" "reserved" "reserved" "KERN-A" "KERN-B" "OEM" "EFI-SYSTEM" "ROOT-B" "ROOT-A")
 id=(11 6 7 9 10 2 4 8 12 5 3)
@@ -14,7 +16,7 @@ add_partition() {
     local partition_type=$1
     local label=$2
     local partition_id=$3
-    local size=$4
+    local size=$(($4 * 512 / blocksize))
     #sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/sda
     echo "sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/sda"
     b=$((b + size))
