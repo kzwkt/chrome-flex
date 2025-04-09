@@ -44,3 +44,4 @@ sudo cgpt show /dev/$device
  
 # usage
 # bash  make_partitions.sh start_sector end_sector devicename_to_install 
+# without parameter it will use fallback from begiing address to about 60gb
