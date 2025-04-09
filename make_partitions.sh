@@ -41,3 +41,6 @@ sudo cgpt add -i 12 -B 0 /dev/$device
 
 # Show final partition table
 sudo cgpt show /dev/$device
+ 
+# usage
+# bash  make_partitions.sh start_sector end_sector devicename_to_install 
