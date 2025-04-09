@@ -5,7 +5,8 @@
 dont do this on windows as windows boot loader use hardcoded address in bcd like part number, adding part before windows part mess it and need to fix bcd usb recovery  
 
 you need to install windows after installing flex first as it might use partition number for booting not sure and windows bcd does same use something like partition=\Device\HarddiskVolume1 so messing number changes that
-dont know if we could instead install chrome from part number 20-32 instead
+
+to do :  install chrome from part number 20-32 instead and see if it boots with flags maybe vboot of chrome dependson flag and PARTUUID only than partno 
 
 for linux as long as it use uuid/partuuid it will not care about partiton number
 
