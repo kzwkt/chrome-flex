@@ -65,9 +65,9 @@ after first login you need powerwash to use rw_partioin ,  else only 1gb is writ
 
   # refrences
 
- https://github.com/sebanc/brunch/tree/r133 
+ https://github.com/sebanc/brunch/tree/r134 
 
-https://github.com/sebanc/brunch/blob/r133/scripts/chromeos-install.sh
+https://github.com/sebanc/brunch/blob/r134/scripts/chromeos-install.sh
 
 https://chromium.googlesource.com/chromiumos/platform/crosutils/+/HEAD/build_library/README.disk_layout
 
