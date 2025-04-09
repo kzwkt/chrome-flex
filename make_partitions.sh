@@ -2,7 +2,7 @@
 
 # cros_size:[16k,512b,1g,512b,512b,64m,64m,16m,64m,4g,4g,flexible)
 # cgpt add -b start_block -s size_in_blocks -t part_type -l part_label -i part_id part/address
-
+device=sda
 b=32768
 end=124207128
 sector_size=$(cat /sys/class/block/$device/queue/logical_block_size)
