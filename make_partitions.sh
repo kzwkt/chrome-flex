@@ -17,8 +17,8 @@ add_partition() {
     local label=$2
     local partition_id=$3
     local size=$(($4 * 512 / blocksize))
-    #sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/sda
-    echo "sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/sda"
+    #sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/$device
+    echo "sudo cgpt add -b $b -s $size -t $partition_type -l "$label" -i $partition_id /dev/$device"
     b=$((b + size))
 }
 
@@ -31,13 +31,13 @@ s=$((end-b))
 sudo cgpt add -b $b -s $s -t data -l "STATE" -i 1
 
 # Set boot priorities
-sudo cgpt add -i 2 -S 0 -T 15 -P 15 /dev/sda
-sudo cgpt add -i 4 -S 0 -T 15 -P 0 /dev/sda
-sudo cgpt add -i 6 -S 0 -T 15 -P 0 /dev/sda
+sudo cgpt add -i 2 -S 0 -T 15 -P 15 /dev/$device
+sudo cgpt add -i 4 -S 0 -T 15 -P 0 /dev/$device
+sudo cgpt add -i 6 -S 0 -T 15 -P 0 /dev/$device
 
 # Bootloader setup
-sudo cgpt boot -p -i 12 /dev/sda
-sudo cgpt add -i 12 -B 0 /dev/sda
+sudo cgpt boot -p -i 12 /dev/$device
+sudo cgpt add -i 12 -B 0 /dev/$device
 
 # Show final partition table
-sudo cgpt show /dev/sda
+sudo cgpt show /dev/$device
