@@ -1,7 +1,6 @@
 #!/bin/bash
 source=$1
 destination=$2
-local size
 image="$source"
 
 
