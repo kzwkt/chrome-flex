@@ -26,10 +26,7 @@ for (( i=1; i<=12; i++ )); do
 		;;
 	esac
 	destination_start=$(cgpt show -i $i -b "$destination")
-	if [ ! -z "$zenity" ]; then
-		dd if="$image" ibs=512 count="$size" skip="$source_start" 2> /dev/null | pv -n -s $(( $size * 512 )) 2> >(zenity --height=480 --width=640 --title="Brunch installer" --progress --auto-close --text="Writing partition $i..." --percentage=0 --no-cancel) | dd of="$destination" obs=512 seek="$destination_start" conv=notrunc 2> /dev/null || error $i
-	else
+	
 		dd if="$image" ibs=512 count="$size" skip="$source_start" 2> /dev/null | pv -s $(( $size * 512 )) | dd of="$destination" obs=512 seek="$destination_start" conv=notrunc 2> /dev/null || error $i
-	fi
 done
 }
