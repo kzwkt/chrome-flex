@@ -44,6 +44,7 @@ cp pbakup backup
 # important : might need reboot save original part backup/ take new one in diffrent non volatile location
 
 sudo sfdisk /dev/sda <pbakup --force
+sudo reboot
 
 ```
  cat /sys/block/sda/queue/logical_block_size 
