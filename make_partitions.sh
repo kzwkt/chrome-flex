@@ -28,7 +28,7 @@ add_partition ${type[i]} ${label[i]} ${id[i]} ${size[i]}
 done
 
 s=$((end-b))
- cgpt add -b $b -s $s -t data -l "STATE" -i 1
+ cgpt add -b $b -s $s -t data -l "STATE" -i 1 /dev/$device
 
 # Set boot priorities
  cgpt add -i 2 -S 0 -T 15 -P 15 /dev/$device
